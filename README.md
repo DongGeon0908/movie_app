@@ -344,6 +344,18 @@ export default App;
 
 - key값의 중복으로 발생하는 오류잡기!
 
+### 부모 Component로 부터 받은 props가 제대로 전달되었는지 확인하는 방법
+- prop가 알맞게 전달되었는지 확인하는 방법!!
+    + prop-types를 통해 props가 알맞은 type을 가졌는지 확인!
+```
+Hello.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  idw: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired
+};
+```
+- 본인이 원하는 자료형으로 props가 전달되었는지 확인할 수 있다.!
 
 #### es6란?
 - JavaScript의 최신버전
@@ -356,3 +368,6 @@ export default App;
 - react의 모든 element는 다르게 해야함!
 ![Alt text](picture/keyError.png)
     + key Error를 해결하기 위해서는 해당 Element에 독립적인 요소들이 존재하면 됨!
+
+
+- 3부터 다시 시작!
