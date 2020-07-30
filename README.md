@@ -45,7 +45,7 @@ npx
     + 빈 HTML안에 react로 작성된 Component들을 주입해서 실행시킴!
 
 
-#####APP.js
+##### APP.js
 ```
 import React from 'react';
 
@@ -57,7 +57,7 @@ export default App;
 ```
 - 여기서 작성된 내용은 className="APP"을 통해 index.js로 보내진다.
 
-#####index.js 
+##### index.js 
 ```
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -75,7 +75,7 @@ ReactDOM.render(
 - index.js파일에서는 APP.js에서 작성했던 functiond을 불어와서 REACTDOM으로 실행시킨다.
 
 
-#####index.html
+##### index.html
 ```
    <title>React App</title>
   </head>
