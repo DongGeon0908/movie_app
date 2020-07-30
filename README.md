@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ MOVIE APP 만들기 with react.js
+ ==============================
+react를 사용해서 영화APP만들기 기초!
+-----------------------------------
 
-## Available Scripts
+### 개발환경
+```
+react.js
+node.js
+npm
+npx
+```
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### REACT란?
+- 리액트는 페이스북에서 제공해주는 프론트엔드 라이브러리
+- 리액트는 컴포넌트 기반으로 되어있어서 컴포넌트에 데이터를 내려주면 개발자가 설계한대로 UI가 만들어져 사용자에게 제공
+    + 컴포넌트란?
+        * 모듈 내에서 재사용이 가능한 최소 단위
+            - 모듈이란?
+                * 특정 기능을 온전히 수행할 수 있도록 만들어진 단위
+- 라액트의 데이터 흐름은 한 방향으로 진행
+    + 위에서 아래로 흐르는 데이터 흐름을 역전시키기 위해서는 특별한 코드를 사용해야함
+- Props , State
+    + Props란?
+        * 부모 컴포넌트에서 자식 컴포넌트로 전달해 주는 데이터
+        * 읽기 전용 데이터
+        * 자식 컴포넌트에서 전달 받은 props 변경 불가
+        * 최상위 부모 컴포넌트만 Props를 변경할 수 있음
+    + State란?
+        * 동적인 데이터를 다룰 때 사용
+        * 사용자와 상호작용을 통해 데이터를 동적으로 변경해야 할 때 사용
+        * State는 클래스형 컴포넌트에서만 사용
+        * 각각의 State는 독립적이라 다른 컴포넌트의 직접적인 접근 불가
+        * 자신보다 상위에 있는 State는 변경이 가능
+        * State를 변경하는 함수를 Props로 받는다면 State 변경 가능
