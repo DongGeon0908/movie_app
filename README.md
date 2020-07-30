@@ -11,6 +11,8 @@ npm
 npx
 ```
 
+<hr/>
+
 ### REACT란?
 - 리액트는 페이스북에서 제공해주는 프론트엔드 라이브러리
 - 리액트는 컴포넌트 기반으로 되어있어서 컴포넌트에 데이터를 내려주면 개발자가 설계한대로 UI가 만들어져 사용자에게 제공
@@ -46,6 +48,8 @@ npx
     + javascript와 html 사이의 조합
     + 리액트에서만 사용하는 유일한 개념
     + Javascript안의 HTML
+
+<hr/>
 
 ### react의 실행구조
 - react에서 작성한 내용들은 index.html파일의 div태그 안에 주입된다. 주입된 내용들이 우리가 보는 화면!! 
@@ -231,4 +235,63 @@ ReactDOM.render(
 );
 ```
 - 리엑트가 하나의 컴포넌트로 인식할 수 있게 태그로 묶는다!
+
+<hr />
+
+### Component에서 Component
+- App Component에서 Hello Componet로 정보를 보내고 Hello Component에서 받은 정보를 사용하는 방법 
+- App Component는 부모 Component이다!. App Component에서 보낸 props를 Hello Component 받을 수 있다. 밑의 코드를 확인하자!
+```
+import React from 'react';
+
+function Hello(props){
+  console.log(props);
+  return <h1>동건이의 리엑트 도전기</h1>;
+}
+
+function App() {
+  return (<div ><h1>Hello World</h1>
+  <Hello hello ="hye" something={true} something2={["heeee",1,2,3,4,5,5]} />
+  </div>);
+}
+export default App;
+
+```
+- < Hello 뒤에 붙은 코드들이 props로 Hello Component로 전달된다. 이걸 받기 위해서는 function Hello(props)를 사용한다.
+- console.log(props)를 사용해서 전달받은 props를 확인할 수 있다.
+    + console.log(props)를 확인하면 object에 전달받은 props를 확인할 수 있다.
+    + 이러한 기술이 react magic 이다.
+#### object에서 hello의 값을 꺼내고 싶으면? 방법1
+```
+function Hello(props){
+  console.log(props.hello);
+  return <h1>동건이의 리엑트 도전기</h1>;
+}
+```
+- props.object이름을 추가하자!
+
+#### object에서 hello의 값을 꺼내고 싶으면? 방법2
+```
+function Hello({ hello }){
+  console.log(hello);
+  return <h1>동건이의 리엑트 도전기</h1>;
+}
+```
+
+### 부모 Component에서 전달받은 props를 자식 Component에서 받아서 사용하고 싶으면?
+```
+function Hello({ hello }){
+  return <h1>{ hello } 동건이의 리엑트 도전기</h1>;
+}
+```
+- {} 중가로 안에 props의 이름을 추가하면 데이터 값을 불러올 수 있다.!
+
+#### es6란?
+- JavaScript의 최신버전
+<hr />
+
+### 주의!
+- js는 인터프리터 언어이다. 그러므로 위에서 아래로 향하는 상하관계를 갖는 구조를 갖는다!!
+    + 오류가 발생할 경우에 위에서 부터 차근차근 확인!!
+- Component는 대문자로 시작해야함!!
 
