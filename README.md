@@ -1,6 +1,6 @@
  MOVIE APP 만들기 with react.js
  ==============================
-react를 사용해서 영화APP만들기 기초!
+react를 사용해서 영화APP 만들기 기초!
 -----------------------------------
 
 ### 개발환경
@@ -14,10 +14,14 @@ npx
 ### REACT란?
 - 리액트는 페이스북에서 제공해주는 프론트엔드 라이브러리
 - 리액트는 컴포넌트 기반으로 되어있어서 컴포넌트에 데이터를 내려주면 개발자가 설계한대로 UI가 만들어져 사용자에게 제공
+- 리액트는 컴포넌트를 개발하는것!! 모든 것이 컴포넌트로 구성
+- 컴포넌트를 구현하고 Virtual DOM으로 실행
+- 실행된 내용을 실제 DOM에 올리는 구조가 리액트
     + 컴포넌트란?
         * 모듈 내에서 재사용이 가능한 최소 단위
             - 모듈이란?
                 * 특정 기능을 온전히 수행할 수 있도록 만들어진 단위
+        * 쉽게 풀어서 HTML을 반환하는 함수!
 - 라액트의 데이터 흐름은 한 방향으로 진행
     + 위에서 아래로 흐르는 데이터 흐름을 역전시키기 위해서는 특별한 코드를 사용해야함
 - Props , State
@@ -38,6 +42,10 @@ npx
     + 실제 DOM에서 이벤트들을 적용시키기 전에 Virtual DOM을 만들어 적용시킴
     + 변경된 부분만 실제 DOM에 반영
 
+- JSX란?
+    + javascript와 html 사이의 조합
+    + 리액트에서만 사용하는 유일한 개념
+    + Javascript안의 HTML
 
 ### react의 실행구조
 - react에서 작성한 내용들은 index.html파일의 div태그 안에 주입된다. 주입된 내용들이 우리가 보는 화면!! 
@@ -84,3 +92,143 @@ ReactDOM.render(
     <div id="root"></div>
 ```
 - index.js에서 불러온 app.js의 내용들을 index.html에 주입한다!
+
+### Component를 만드는 방법
+- src 폴더 아래에 새로운 js파일을 생성!
+```
+import React from 'react';
+```
+위의 코드를 추가하지 않으면 리액트는 해당 js의 컴포넌트를 인식하지 못합
+
+##### Hello.js
+```
+import React from 'react';
+
+function Hello(){
+    return <h3>동건이의 리엑트 도전</h3>;
+}
+
+export default Hello;
+```
+- 기본적인 컴포넌트를 생성하는 방식!
+- function을 제작한 이후에는 export를 통해 Hello컴포넌트를 등록해야함!
+
+##### index.js
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import Hello from './Hello';
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Hello />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+- App 컴포넌트 대신에 Hello 컴포넌트를 삽입
+
+#### 주의사항 
+- react application은 하나의 Component만을 rendering함!
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import Hello from './Hello';
+
+
+ReactDOM.render(
+
+    <App/>
+    <Hello />
+ ,
+  document.getElementById('root')
+);
+```
+- 위의 코드처럼 두개의 컴포넌트를 연관성 없이 실행하는 것은 오류 발생!
+    + 이를 해결하기 위해서 컴포넌트 안에 컴포넌트를 실행!
+
+
+- 컴포넌트 생성을 간단하게 하는 방법 1
+```
+import React from 'react';
+
+export default () =><div>Hello World</div>;
+```
+
+- 컴포넌트 생성을 간단하게 하는 방법 2
+```
+import React from 'react';
+
+export default () =>(<div>Hello World</div>);
+```
+
+- 컴포넌트 생성을 간단하게 하는 방법 3
+```
+import React from 'react';
+
+export default () =>{
+    return <div>Hello World</div>
+    };
+```
+- 만약 하나의 js파일에 여러개의 컴포넌트를 생성하고 싶으면?
+```
+export default App;
+export default Hello;
+```
+- 하나의 파일에 여러 컴포넌트를 생성할 경우에 다른 파일에서 해당 컴포넌트를 주입시키기 위해서는 아래의 구조를 따른다.
+```
+import {App} from './App';
+```
+- 그러나 위의 export 방식은 선호하는 방식이 아님
+
+```
+export default Hello =() => {
+  return (
+    <div >
+    Hello World
+</div>
+  )
+};
+```
+- export를 하는 동시에 선언함
+
+- 주의사항
+    + () -> return X
+    + {} -> return O
+
+
+### 질문사항/
+-  <React.StrictMode>?
+```
+<React.StrictMode>
+    <Hello />
+    <App />
+  </React.StrictMode>
+```
+- 이런 경우는 왜 두개의 컴포넌트 모두 실행 가능한 것인가?
+    + 리엑트에서 컴포넌트를 랜더링 할때는 하나의 컴포넌트만 가능하다.
+```
+ReactDOM.render(
+
+    <App/>
+    <Hello />
+ ,
+  document.getElementById('root')
+);
+```
+- 위의 코드처럼 두개의 컴포넌트를 랜더링할 수 없다. 이런 이유로 2개 이상의 컴포넌트를 랜더링할 때는 태그를 사용해서 묶는다.
+```
+ReactDOM.render(
+<>
+    <App/>
+    <Hello />
+</>
+ ,
+  document.getElementById('root')
+);
+```
+- 리엑트가 하나의 컴포넌트로 인식할 수 있게 태그로 묶는다!
+
