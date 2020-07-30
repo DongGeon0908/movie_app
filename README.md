@@ -308,11 +308,42 @@ export default App;
 - map은 배열에 있는 값을 순차적으로 가져오는 기능을 제공함
     + map이란?
         * map() 함수는 각 배열의 요소를 돌면서 인자로 전달된 함수를 사용하여 처리 된 새로운 결과를 새로운 배열에 담아 반환하는 함수
+        * map은 각각 item 별로 props를 반환
 - 기본구조
 ```
 배열이름.map(원하는 명칭 => <컴포넌트이름 오브젝트 명칭={원하는명칭.오브젝트 명칭}/>)
 ```
 - map은 react에서 많이 쓰이는 함수이므로 반복적인 학습이 중요!
+
+#### function을 활용해서 map의 object를 props로 보내자!
+```
+import React from 'react';
+
+function Hello({ name,id}){
+return <h1>{ name } 동건이의 리엑트 도전기{id}</h1>;
+}
+
+const say = [{name: "hello", id: "1"},{name:"zeronimo", id: "2"},{name: "good",id:"3"},{name:"bye",id:"4"}]
+
+function rendersay(word){
+  console.log(word);
+  return <Hello name={word.name} id={word.id} />
+}
+
+function App() {
+  return (
+  <div >
+ {say.map(rendersay)}
+  </div>);
+}
+export default App;
+```
+- 구조는 간단함!
+    + 부모 컴포넌트 -> 함수 -> 자식 컴포넌트
+    + 위의 방식은 부모 컴포넌트와 자식 컴포넌트에 부담을 줄인다!
+
+- key값의 중복으로 발생하는 오류잡기!
+
 
 #### es6란?
 - JavaScript의 최신버전
@@ -322,4 +353,6 @@ export default App;
 - js는 인터프리터 언어이다. 그러므로 위에서 아래로 향하는 상하관계를 갖는 구조를 갖는다!!
     + 오류가 발생할 경우에 위에서 부터 차근차근 확인!!
 - Component는 대문자로 시작해야함!!
-
+- react의 모든 element는 다르게 해야함!
+![Alt text](picture/keyError.png)
+    + key Error를 해결하기 위해서는 해당 Element에 독립적인 요소들이 존재하면 됨!
