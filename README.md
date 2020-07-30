@@ -238,7 +238,7 @@ ReactDOM.render(
 
 <hr />
 
-### Component에서 Component
+### Component에서 Component (정적)
 - App Component에서 Hello Componet로 정보를 보내고 Hello Component에서 받은 정보를 사용하는 방법 
 - App Component는 부모 Component이다!. App Component에서 보낸 props를 Hello Component 받을 수 있다. 밑의 코드를 확인하자!
 ```
@@ -278,13 +278,41 @@ function Hello({ hello }){
 }
 ```
 
-### 부모 Component에서 전달받은 props를 자식 Component에서 받아서 사용하고 싶으면?
+#### 부모 Component에서 전달받은 props를 자식 Component에서 받아서 사용하고 싶으면?
 ```
 function Hello({ hello }){
   return <h1>{ hello } 동건이의 리엑트 도전기</h1>;
 }
 ```
 - {} 중가로 안에 props의 이름을 추가하면 데이터 값을 불러올 수 있다.!
+
+### Component에서 Component (동적)
+- 동적으로 props를 전달하는 방법
+```
+import React from 'react';
+
+function Hello({ name,id}){
+return <h1>{ name } 동건이의 리엑트 도전기{id}</h1>;
+}
+
+const say = [{name: "hello", id: "1"},{name:"zeronimo", id: "2"},{name: "good",id:"3"},{name:"bye",id:"4"}]
+
+function App() {
+  return (
+  <div ><h1>Hello World</h1>
+ {say.map(what => <Hello name={what.name} id={what.id}/>)}
+  </div>);
+}
+export default App;
+```
+- map은 배열에 있는 값을 순차적으로 가져오는 기능을 제공함
+    + map이란?
+        * map() 함수는 각 배열의 요소를 돌면서 인자로 전달된 함수를 사용하여 처리 된 새로운 결과를 새로운 배열에 담아 반환하는 함수
+- 기본구조
+```
+배열이름.map(원하는 명칭 => <컴포넌트이름 오브젝트 명칭={원하는명칭.오브젝트 명칭}/>)
+```
+- map은 react에서 많이 쓰이는 함수이므로 반복적인 학습이 중요!
 
 #### es6란?
 - JavaScript의 최신버전
