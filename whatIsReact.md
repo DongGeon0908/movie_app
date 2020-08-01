@@ -383,8 +383,9 @@ Hello.propTypes = {
       + react.component로 확장된 class component는 자동으로 render()를 실행
 
     - state를 사용해서 object값을 바꾸는 방법!
-    ```
-    import React from 'react';
+
+```
+import React from 'react';
 
 class App extends React.Component{
   state = {
@@ -412,7 +413,8 @@ class App extends React.Component{
 }
 
 export default App;
-    ```
+```
+
 - setState를 사용해서 state의 값을 동적으로 바꿀 수 있음
     - setState란?
         + setState는 class Component에서 새로운 state와 render()를 자동으로 호출해주는 역할을 함!
