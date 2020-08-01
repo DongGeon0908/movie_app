@@ -371,7 +371,8 @@ Hello.propTypes = {
       + props를 객체 인자로 받아 리엑트 엘리먼트를 반환
 
     - Class Component란? 
-    
+      + state를 사용
+      + life cycle method를 통해 react가 component를 생성하고 삭제하는 방법
     ex
     ```
     class Welcome extends React.Component {
@@ -458,6 +459,29 @@ export default App;
     + function을 이용하는 방법!
     + react는 current를 해석할 수 있음!
 
+#### life cycle method
+- react에서 기본적으로 component를 생성하고 삭제하는 기능
+  - mounting : 컴포넌트 생성
+    + constructor() -> javascript에서 다른 class를 생성할때 호출되는 것
+      * componet의 생성, 화면표시, web응답할 때 사용됨
+    + render() : component가 render될 때
+    + componentDidMount() : component가 처음 render된것을 알려줌
+  - updating : 컴포넌트 업데이트
+    + render() : component가 render될 때
+    + componentDidUpdate() : 업데이트가 완료되면 실행!
+  - unmounting : 컴포넌트 종료
+    + componentWillUnmount : 컴포넌트가 종료되었을때 실행!
+
+#### render()란?
+  + 리엑트에서 사용하는 유일한 function
+  + render()에서 새로운 엘리먼트 트리 생성
+  + 이전 엘리먼트 트리와 비교해서 차이점을 확인하고 업데이트
+      - 엘리먼트란?
+          + 하나의 객체를 의미함
+          ```
+          cost element ={};
+          ```
+      - 모든 엘리먼트는 react dom에서 관리 => root dom
 
 #### function component와 class component의 차이점
       + Function Component보다 더 많은 기능을 재공
