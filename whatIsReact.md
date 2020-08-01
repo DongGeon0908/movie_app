@@ -472,6 +472,31 @@ export default App;
   - unmounting : 컴포넌트 종료
     + componentWillUnmount : 컴포넌트가 종료되었을때 실행!
 
+    ex)
+    ```
+    import React from 'react';
+
+class App extends React.Component {
+  state = {
+    isLoading : true
+  };
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false});
+    }, 6000);
+}
+
+
+  render() {
+    const { isLoading } = this.state;
+    return <div>{isLoading ? "Loading" : "We are Ready!"}</div>;
+  }
+}
+
+export default App;
+    ```
+- life cycle method를 사용해서 state의 값을 바꾸기!
+
 #### render()란?
   + 리엑트에서 사용하는 유일한 function
   + render()에서 새로운 엘리먼트 트리 생성
