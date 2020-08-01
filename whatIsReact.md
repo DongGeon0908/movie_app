@@ -497,6 +497,23 @@ export default App;
     ```
 - life cycle method를 사용해서 state의 값을 바꾸기!
 
+#### fetch
+- 일반적으로 javascript에서 data를 fetch하는 방법은 fetch를 사용하는 것
+  + fech란? 
+    * API를 사용하여 백엔드 서버와 비동기 요청을 하는 방식 중 하나
+      + 비동기 요청이란?
+        * 특정 코드의 연산이 끝날 때까지 코드의 실행을 멈추지 않고 다음 코드를 먼저 실행하는 자바스크립트의 특성
+```
+fetch()
+```
+
+- fetch보다 더 좋은 방법 axios
+```
+axios()
+```
+  - axios란?
+    + fetch 위에 있는 작은 layer
+
 #### render()란?
   + 리엑트에서 사용하는 유일한 function
   + render()에서 새로운 엘리먼트 트리 생성
