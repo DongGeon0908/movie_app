@@ -420,6 +420,7 @@ export default App;
     - `this.statecount = 4`로 지정을 했어도 react는 render를 수행하지 않으므로 값이 변경되지 않음!
 
 - this.state.count로 state의 값을 가져오는 방법이 불편하다면?
+
 ```
 import React from 'react';
 
@@ -450,6 +451,7 @@ class App extends React.Component{
 
 export default App;
 ```
+
 - current를 통해서 count의 값을 가져올 수 있다!
     + function을 이용하는 방법!
     + react는 current를 해석할 수 있음!
