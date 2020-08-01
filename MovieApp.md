@@ -99,3 +99,6 @@ function Movie({ year, title, summary, poster, genres }) {
 }
 ```
 - 배열의 값을 뽑아오려면 map()을 사용해야 한다.!
+
+### 네비게이션을 만들자!
+- yarn add react-router-dom 설치 

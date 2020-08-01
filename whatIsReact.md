@@ -524,7 +524,19 @@ hello = async () => {
 };
 ```
   - async()와 await을 통해 함수의 비동기를 처리할 수 있음
-#### render()란?
+
+#### function component와 class component의 차이점
+      + Function Component보다 더 많은 기능을 재공
+      + 그러나 props 재사용으로 인해 문제가 말생하기도 함!
+      + class component는 react component로부터 확장됨
+      + class component는 state를 사용할 수 있음
+          - 그러나 현잰 hooks가 있기에 function도 이를 사용 가능
+
+#### class component의 대체? No 신기술 react hooks!
+- class를 쓰지 않고, function에서 state 를 운용할 수 있는 기능
+
+
+### render()란?
   + 리엑트에서 사용하는 유일한 function
   + render()에서 새로운 엘리먼트 트리 생성
   + 이전 엘리먼트 트리와 비교해서 차이점을 확인하고 업데이트
@@ -535,12 +547,24 @@ hello = async () => {
           ```
       - 모든 엘리먼트는 react dom에서 관리 => root dom
 
-#### function component와 class component의 차이점
-      + Function Component보다 더 많은 기능을 재공
-      + 그러나 props 재사용으로 인해 문제가 말생하기도 함!
-      + class component는 react component로부터 확장됨
-      + class component는 state를 사용할 수 있음
-          - 그러나 현잰 hooks가 있기에 function도 이를 사용 가능
+### Router란?
+- Router를 통해서 내가 원하는 .js로 url을 보낼 수 있다.
+```
+function App(){
+  return <HashRouter><Route component={About}/></HashRouter>
+}
+```
+  + 위의 코드에서는 ./Route 로 이동한다!
+  + Router는 내가 필요한 페이지에대한 정보를 가지고 온다.
+  + 가지고 온 정보와 컴포넌트들의 정보가 맞다면 화면에 띄워진다.  
+- 내가 원하지 않는 컴포넌트가 화면에 띄워지는 것을 막으려면? ==>  exact!
+```
+ <Route path="/" exact={true} component={Home} />
+```
+   + exact란?
+      - "/" 가 있는 컴포넌트만 비교 실행!
+      - exact가 있는 컴포넌트만 실행하겠다!
+      
 ### 주의!
 - js는 인터프리터 언어이다. 그러므로 위에서 아래로 향하는 상하관계를 갖는 구조를 갖는다!!
     + 오류가 발생할 경우에 위에서 부터 차근차근 확인!!
