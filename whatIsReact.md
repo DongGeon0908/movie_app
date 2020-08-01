@@ -1,15 +1,7 @@
- MOVIE APP 만들기 with react.js
+ What is React!
  ==============================
-react를 사용해서 영화APP 만들기 기초!
+react를 공부하는 가장 기초적인 학습!
 -----------------------------------
-
-### 개발환경
-```
-react.js
-node.js
-npm
-npx
-```
 
 <hr/>
 
@@ -286,8 +278,8 @@ function Hello({ hello }){
 ```
 - {} 중가로 안에 props의 이름을 추가하면 데이터 값을 불러올 수 있다.!
 
-### Component에서 Component (동적)
-- 동적으로 props를 전달하는 방법
+### 동적으로 props를 전달하는 방법
+- Component에서 Component (동적)
 ```
 import React from 'react';
 
@@ -361,6 +353,114 @@ Hello.propTypes = {
 - JavaScript의 최신버전
 <hr />
 
+### 동적으로 state 전달하는 방법
+- state란?
+    + state는 object
+    + 동적인 데이터와 함께 작업 중 생성
+    + 변하는 데이터, 존재하지 않은 데이터 등
+    + 기존읜 App.js에서 props를 사용하기 위해 썼던 문법과 state를 사용하기 위한 문법은 다름
+- Function Component와 Class Component
+    - Function component란? 
+    
+    ex
+    ```
+    function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+    }
+    ```
+      + props를 객체 인자로 받아 리엑트 엘리먼트를 반환
+
+    - Class Component란? 
+    
+    ex
+    ```
+    class Welcome extends React.Component {
+    render() {
+    return <h1>Hello, {this.props.name}</h1>;
+    }
+    }
+    ```
+      + react.component로 확장된 class component는 자동으로 render()를 실행
+
+    - state를 사용해서 object값을 바꾸는 방법!
+    ```
+    import React from 'react';
+
+class App extends React.Component{
+  state = {
+    count: 0
+  };
+  add = () => {
+    this.setState({
+      count: this.state.count + 1
+    })
+  };
+  minus = () => {
+    this.setState({
+      count: this.state.count - 1
+    })
+  };
+  render(){
+  return(
+  <div>
+<h1>i am class component{this.state.count}</h1>
+<button onClick={this.add}>Add</button>
+  <button onClick={this.minus}>Minus</button>
+  </div>
+  );
+}
+}
+
+export default App;
+    ```
+- setState를 사용해서 state의 값을 동적으로 바꿀 수 있음
+    - setState란?
+        + setState는 class Component에서 새로운 state와 render()를 자동으로 호출해주는 역할을 함!
+- setState를 호출하지 않을 경우?
+    - `this.statecount = 4`로 지정을 했어도 react는 render를 수행하지 않으므로 값이 변경되지 않음!
+
+- this.state.count로 state의 값을 가져오는 방법이 불편하다면?
+```
+import React from 'react';
+
+class App extends React.Component{
+  state = {
+    count: 0
+  };
+  add = () => {
+    this.setState(current => ({
+      count: current.count + 1
+    }))
+  };
+  minus = () => {
+    this.setState(current => ({
+      count: current.count - 1
+    }))
+  };
+  render(){
+  return(
+  <div>
+<h1>i am class component{this.state.count}</h1>
+<button onClick={this.add}>Add</button>
+  <button onClick={this.minus}>Minus</button>
+  </div>
+  );
+}
+}
+
+export default App;
+```
+- current를 통해서 count의 값을 가져올 수 있다!
+    + function을 이용하는 방법!
+    + react는 current를 해석할 수 있음!
+
+
+#### function component와 class component의 차이점
+      + Function Component보다 더 많은 기능을 재공
+      + 그러나 props 재사용으로 인해 문제가 말생하기도 함!
+      + class component는 react component로부터 확장됨
+      + class component는 state를 사용할 수 있음
+          - 그러나 현잰 hooks가 있기에 function도 이를 사용 가능
 ### 주의!
 - js는 인터프리터 언어이다. 그러므로 위에서 아래로 향하는 상하관계를 갖는 구조를 갖는다!!
     + 오류가 발생할 경우에 위에서 부터 차근차근 확인!!
