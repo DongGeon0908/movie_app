@@ -9,6 +9,7 @@ react.js
 node.js
 npm
 npx
+yts -> movie list를 가져오는 api 받아오기!
 ```
 
 <hr/>
