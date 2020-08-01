@@ -70,3 +70,32 @@ function Movie({ id, year, title, summary, poster }) {
   return <h4>{title}</h4>;
 }
 ```
+
+#### props에 배열 추가하기!
+```
+genres: PropTypes.arrayOf(PropTypes.string).isRequired 
+```
+
+밑의 코드를 주의깊게 보자!
+```
+function Movie({ year, title, summary, poster, genres }) {
+  return (
+    <div className="movie">
+      <img src={poster} alt={title} title={title} />
+      <div className="movie__data">
+        <h3 className="movie__title">{title}</h3>
+        <h5 className="movie__year">{year}</h5>
+        <ul className="genres">
+          {genres.map((genre, index) => (
+            <li key={index} className="genres__genre">
+              {genre}
+            </li>
+          ))}
+        </ul>
+        <p className="movie__summary">{summary}</p>
+      </div>
+    </div>
+  );
+}
+```
+- 배열의 값을 뽑아오려면 map()을 사용해야 한다.!
